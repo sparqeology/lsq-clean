@@ -1,9 +1,10 @@
 import zlib from 'node:zlib';
-import { Transform } from 'node:stream';
+import { Transform, Writable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
 import bz2 from 'unbzip2-stream';
 import N3 from 'n3';
 import N3TollerantStreamParser from './N3TollerantStreamParser.js';
+import { stringify } from 'csv-stringify';
 
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
@@ -47,7 +48,7 @@ class ExecutionExtractor extends Transform {
             this.addQueryExecutionAssociation(quad._subject.id, quad._object.id);
             this.includeQuery(quad._subject.id);
         } else if (quad._predicate.id === LSQV_PREFIX + 'text') {
-            this.addQuery(quad._subject.id, quad._object);
+            this.addQuery(quad._subject.id, quad._object.value);
         }
         callback();
     }
@@ -94,7 +95,8 @@ class ExecutionExtractor extends Transform {
     outputExecutionInfo(queryId, executionId, executionInfo) {
         this.push({
             type: 'execution',
-            queryId, executionId, executionInfo
+            queryId, queryHash: this.getQueryHash(queryId),
+            executionId, executionInfo
         });
     }
 
@@ -191,7 +193,6 @@ class ExecutionAsQuadsSerializer extends Transform {
 }
 
 class QueryAsQuadsSerializer extends Transform {
-    execCount = 0;
     constructor() {
         super({objectMode: true});
     }
@@ -206,7 +207,7 @@ class QueryAsQuadsSerializer extends Transform {
         this.push(quad(
             namedNode(queryId),
             namedNode(LSQV_PREFIX + 'text'),
-            queryText
+            literal(queryText)
         ));
         callback();
     }
@@ -219,6 +220,21 @@ class ObjectLogger extends Transform {
     _transform(data, encoding, callback) {
         console.log(data);
         callback(null, data);
+    }
+};
+
+class ForkStream extends Transform {
+    constructor(stream) {
+        super({objectMode: true});
+        this.stream = stream;
+    }
+    _transform(data, encoding, callback) {
+        this.stream.write(data);
+        callback(null, data);
+    }
+    _flush(callback) {
+        this.stream.end();
+        callback();
     }
 };
 
@@ -243,8 +259,21 @@ class DetourStream extends Transform {
     }
 };
 
+class DummySink  extends Writable {
+    constructor() {
+        super({objectMode: true});
+    }
+    _write(data, encoding, callback) {
+        callback(null, data);
+    }
+};
+
 export default async function cleanLsqStream(
-        lsqReadStream, queriesWriteStream, execsWriteStream, execsBaseURI) {
+        lsqReadStream, execsBaseURI,
+        options = {}
+        // queriesCSVWriteStream, execsCSVWriteStream,
+        // queriesRDFWriteStream, execsRDFWriteStream,
+    ) {
     const executionExtractor = new ExecutionExtractor();
 
     function ntGzWriter(outputWriter) {
@@ -253,11 +282,70 @@ export default async function cleanLsqStream(
         return writer;
     }
 
-    const querySink = new QueryAsQuadsSerializer();
-    querySink.pipe(ntGzWriter(queriesWriteStream));
+    let querySink = new DummySink();
+    if ('queriesCsv' in options) {
+        querySink = stringify({
+            header: true,
+            columns: [
+                {
+                    key: 'queryHash',
+                    header: 'queryId'
+                },
+                'queryText'
+            ]
+        })
+        querySink.pipe(options.queriesCsv);
+    }
 
-    const executionSink = new ExecutionAsQuadsSerializer(execsBaseURI);
-    executionSink.pipe(ntGzWriter(execsWriteStream));
+    if ('queriesRdf' in options) {
+        const newQuerySink = new QueryAsQuadsSerializer();
+        newQuerySink.pipe(ntGzWriter(options.queriesRdf));
+        querySink = new ForkStream(querySink);
+        querySink.pipe(newQuerySink);
+    }
+
+    let executionSink = new DummySink();
+    if ('execsCsv' in options) {
+        executionSink = stringify({
+            header: true,
+            columns: [
+                // 'execId',
+                // {
+                //     // key: 'queryHash',
+                //     key: 'executionInfo',
+                //     header: 'execId'
+                // },
+                {
+                    key: 'queryHash',
+                    header: 'queryId'
+                },
+                {
+                    key: 'executionInfo.hostHash.value',
+                    header: 'host'
+                },
+                {
+                    key: 'executionInfo.atTime.value',
+                    header: 'timestamp'
+                }
+            ],
+            // cast: {
+            //     object:  (value, context) => {
+            //         if (context.column === 'executionInfo') {
+            //             return "" + (context.records + 1);
+            //         }
+            //         return value;
+            //     }
+            // }
+        })
+        executionSink.pipe(options.execsCsv);
+    }
+
+    if ('execsRdf' in options) {
+        const newExecutionSink = new ExecutionAsQuadsSerializer(execsBaseURI);
+        newExecutionSink.pipe(ntGzWriter(options.execsRdf));
+        executionSink = new ForkStream(executionSink);
+        executionSink.pipe(newExecutionSink);
+    }
 
     await pipeline(
         lsqReadStream,

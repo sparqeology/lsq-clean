@@ -14,12 +14,40 @@ inputs:
     type: string
     inputBinding:
       position: 1
+  queries_csv_filename:
+    type: string?
+    inputBinding:
+      prefix: --queries-csv
+    # default: queries
+  execs_csv_filename:
+    type: string?
+    inputBinding:
+      prefix: --execs-csv
+    # default: execs
+  queries_rdf_filename:
+    type: string?
+    inputBinding:
+      prefix: --queries-rdf
+    # default: queries
+  execs_rdf_filename:
+    type: string?
+    inputBinding:
+      prefix: --execs-rdf
+    # default: execs
 outputs:
+  queries_csv:
+    type: File?
+    outputBinding:
+      glob: $(inputs.queries_csv_filename).csv
+  execs_csv:
+    type: File?
+    outputBinding:
+      glob: $(inputs.execs_csv_filename).csv
   queries_rdf:
-    type: File
+    type: File?
     outputBinding:
-      glob: queries.nt.gz
+      glob: $(inputs.queries_rdf_filename).nt.gz
   execs_rdf:
-    type: File
+    type: File?
     outputBinding:
-      glob: execs.nt.gz
+      glob: $(inputs.execs_rdf_filename).nt.gz

@@ -1,0 +1,5 @@
+ -  name: lsq_source
+    type: record
+    fields:
+        source_id: string
+        source_file: File

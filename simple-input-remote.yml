@@ -1,0 +1,4 @@
+lsq_source:
+  class: File
+  location: https://files.dice-research.org/archive/lsqv2/dumps/bench-kegg-lsq2.nt.bz2
+execs_ns: http://example.org/executions/

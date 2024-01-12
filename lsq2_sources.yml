@@ -1,0 +1,98 @@
+base_url: https://files.dice-research.org/archive/lsqv2/dumps/
+extension: .nt.bz2
+sources:
+  - source_path: dbpedia/bench-dbpedia-20151025-lsq2
+    source_id: dbpedia-20151025
+  - source_path: dbpedia/bench-dbpedia-20151124-lsq2
+    source_id: dbpedia-20151124
+  - source_path: dbpedia/bench-dbpedia-20151126-lsq2
+    source_id: dbpedia-20151126
+  - source_path: dbpedia/bench-dbpedia-20151213-lsq2
+    source_id: dbpedia-20151213
+  - source_path: dbpedia/bench-dbpedia-20151230-lsq2
+    source_id: dbpedia-20151230
+  - source_path: dbpedia/bench-dbpedia-20160117-lsq2
+    source_id: dbpedia-20160117
+  - source_path: dbpedia/bench-dbpedia-20160212-lsq2
+    source_id: dbpedia-20160212
+  - source_path: dbpedia/bench-dbpedia-20160222-lsq2
+    source_id: dbpedia-20160222
+  - source_path: dbpedia/bench-dbpedia-20160301-lsq2
+    source_id: dbpedia-20160301
+  - source_path: dbpedia/bench-dbpedia-20160303-lsq2
+    source_id: dbpedia-20160303
+  - source_path: dbpedia/bench-dbpedia-20160304-lsq2
+    source_id: dbpedia-20160304
+  - source_path: dbpedia/bench-dbpedia-20160314-lsq2
+    source_id: dbpedia-20160314
+  - source_path: dbpedia/bench-dbpedia-20160411-lsq2
+    source_id: dbpedia-20160411
+  - source_path: dbpedia/bench-dbpedia.3.5.1.log-lsq2
+    source_id: dbpedia.3.5.1.log
+  - source_path: wikidata/bench-wikidata-interval1-organic-lsq2
+    source_id: wikidata-interval1-organic
+  - source_path: wikidata/bench-wikidata-interval2-organic-lsq2
+    source_id: wikidata-interval2-organic
+  - source_path: wikidata/bench-wikidata-interval3-organic-lsq2
+    source_id: wikidata-interval3-organic
+  - source_path: wikidata/bench-wikidata-interval4-organic-lsq2
+    source_id: wikidata-interval4-organic
+  - source_path: wikidata/bench-wikidata-interval5-organic-lsq2
+    source_id: wikidata-interval5-organic
+  - source_path: wikidata/bench-wikidata-interval6-organic-lsq2
+    source_id: wikidata-interval6-organic
+  - source_path: wikidata/bench-wikidata-interval7-organic-lsq2
+    source_id: wikidata-interval7-organic
+  - source_path: bench-affymetrix-lsq2
+    source_id: bio2rdf-affymetrix
+  - source_path: bench-biomedels-lsq2
+    source_id: bio2rdf-biomodels
+  - source_path: bench-bioportal-lsq2
+    source_id: bio2rdf-bioportal
+  - source_path: bench-ctd-lsq2
+    source_id: bio2rdf-ctd
+  - source_path: bench-dbsnp-lsq2
+    source_id: bio2rdf-dbsnp
+  - source_path: bench-drugbank-lsq2
+    source_id: bio2rdf-drugbank
+  - source_path: bench-genage-lsq2
+    source_id: bio2rdf-genage
+  - source_path: bench-gendr-lsq2
+    source_id: bio2rdf-gendr
+  - source_path: bench-gene-lsq2
+    source_id: bio2rdf-gene
+  - source_path: bench-goa-lsq2
+    source_id: bio2rdf-goa
+  - source_path: bench-hgnc-lsq2
+    source_id: bio2rdf-hgnc
+  - source_path: bench-homologene-lsq2
+    source_id: bio2rdf-homologene
+  - source_path: bench-irefindex-lsq2
+    source_id: bio2rdf-irefindex
+  - source_path: bench-kegg-lsq2
+    source_id: bio2rdf-kegg
+  - source_path: bench-linkedspl-lsq2
+    source_id: bio2rdf-linkedspl
+  - source_path: bench-mgi-lsq2
+    source_id: bio2rdf-mgi
+  - source_path: bench-ncbigene-lsq2
+    source_id: bio2rdf-ncbigene
+  - source_path: bench-omim-lsq2
+    source_id: bio2rdf-omim
+  - source_path: bench-pharmgkb-lsq2
+    source_id: bio2rdf-pharmgkb
+  - source_path: bench-sabiork-lsq2
+    source_id: bio2rdf-sabiork
+  - source_path: bench-sgd-lsq2
+    source_id: bio2rdf-sgd
+  - source_path: bench-sidr-lsq2
+    source_id: bio2rdf-sidr
+  - source_path: bench-taxonomy-lsq2
+    source_id: bio2rdf-taxonomy
+  - source_path: bench-wormbase-lsq2
+    source_id: bio2rdf-wormbase
+  - source_path: bench-linkedGeoData-lsq2
+    source_id: linkedGeoData
+  - source_path: bench-swdf-lsq2
+    source_id: swdf
+
