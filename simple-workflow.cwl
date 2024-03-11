@@ -4,8 +4,7 @@ class: CommandLineTool
 baseCommand: node
 requirements:
   DockerRequirement:
-    dockerLoad: dist/docker_image.tar.gz
-    dockerImageId: lsq_clean
+    dockerPull: miguel76/lsq-clean:latest
     dockerOutputDirectory: /home/node/output
 inputs:
   lsq_source:
