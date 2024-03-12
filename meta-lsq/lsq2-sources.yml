@@ -1,5 +1,6 @@
 base_url: https://files.dice-research.org/archive/lsqv2/dumps/
 extension: .nt.bz2
+base_sources_uri: http://lsq.aksw.org/sources/
 sources:
   - source_path: dbpedia/bench-dbpedia-20151025-lsq2
     source_id: dbpedia-20151025
@@ -28,21 +29,21 @@ sources:
   - source_path: dbpedia/bench-dbpedia-20160411-lsq2
     source_id: dbpedia-20160411
   - source_path: dbpedia/bench-dbpedia.3.5.1.log-lsq2
-    source_id: dbpedia.3.5.1.log
+    source_id: dbpedia-2010
   - source_path: wikidata/bench-wikidata-interval1-organic-lsq2
-    source_id: wikidata-interval1-organic
+    source_id: wikidata-organic-1
   - source_path: wikidata/bench-wikidata-interval2-organic-lsq2
-    source_id: wikidata-interval2-organic
+    source_id: wikidata-organic-2
   - source_path: wikidata/bench-wikidata-interval3-organic-lsq2
-    source_id: wikidata-interval3-organic
+    source_id: wikidata-organic-3
   - source_path: wikidata/bench-wikidata-interval4-organic-lsq2
-    source_id: wikidata-interval4-organic
+    source_id: wikidata-organic-4
   - source_path: wikidata/bench-wikidata-interval5-organic-lsq2
-    source_id: wikidata-interval5-organic
+    source_id: wikidata-organic-5
   - source_path: wikidata/bench-wikidata-interval6-organic-lsq2
-    source_id: wikidata-interval6-organic
+    source_id: wikidata-organic-6
   - source_path: wikidata/bench-wikidata-interval7-organic-lsq2
-    source_id: wikidata-interval7-organic
+    source_id: wikidata-organic-7
   - source_path: bench-affymetrix-lsq2
     source_id: bio2rdf-affymetrix
   - source_path: bench-biomedels-lsq2
@@ -60,7 +61,7 @@ sources:
   - source_path: bench-gendr-lsq2
     source_id: bio2rdf-gendr
   - source_path: bench-gene-lsq2
-    source_id: bio2rdf-gene
+    source_id: bio2rdf-geneid
   - source_path: bench-goa-lsq2
     source_id: bio2rdf-goa
   - source_path: bench-hgnc-lsq2
@@ -86,13 +87,13 @@ sources:
   - source_path: bench-sgd-lsq2
     source_id: bio2rdf-sgd
   - source_path: bench-sidr-lsq2
-    source_id: bio2rdf-sidr
+    source_id: bio2rdf-sider
   - source_path: bench-taxonomy-lsq2
     source_id: bio2rdf-taxonomy
   - source_path: bench-wormbase-lsq2
     source_id: bio2rdf-wormbase
   - source_path: bench-linkedGeoData-lsq2
-    source_id: linkedGeoData
+    source_id: lgd
   - source_path: bench-swdf-lsq2
     source_id: swdf
 

@@ -31,9 +31,17 @@ Pull image from Docker Hub
 docker pull miguel76/lsq-clean
 ```
 
-<!-- Usage:
+Example usage:
 
-`docker run miguel76/lsq-clean [options] <execs-ns>` -->
+```shell
+docker run miguel76/lsq-clean \
+    --source data/input/bench-kegg-lsq2.nt.bz2 \
+    --queries-csv data/output/bio2rdf-kegg_queries.csv \
+    --execs-csv data/output/bio2rdf-kegg_execs.csv \
+    --queries-rdf data/output/bio2rdf-kegg_queries.nt.gz \
+    --execs-rdf data/output/bio2rdf-kegg_execs.nt.gz \
+    --execs-ns http://lsq.aksw.org/sources/kegg/execs/
+```
 
 Get usage documentation
 
@@ -72,21 +80,24 @@ To convert a single file you can use `simple-workflow.cwl`.
 You can find an example of input in `simple-input-example.yml`.
 
 ```shell
-cwl-runner simple-workflow.cwl simple-input-example.yml
+cwl-runner --outdir=data/output \
+    cwl/simple-workflow.cwl cwl/simple-input-example.yml
 ```
 
 To convert multiple files you can use `list-workflow.cwl`. 
 You can find an example of input in `sample-files.yml`, featuring some files from the LSQ 2 dataset.
 
 ```shell
-cwl-runner list-workflow.cwl sample-files.yml
+cwl-runner --outdir=data/output \
+    cwl/list-workflow.cwl cwl/sample-files.yml
 ```
 
-To convert multiple file under a common namespace (with a simpler input in respect to `list-workflow.cwl`) you can use `remote-sources-workflow.cwl`. 
+To convert multiple files under a common namespace (with a simpler input in respect to `list-workflow.cwl`) you can use `remote-sources-workflow.cwl`. 
 You can find an example of input in `sample-sources.yml`, featuring some files from the LSQ 2 dataset.
 
 ```shell
-cwl-runner remote-sources-workflow.cwl sample-sources.yml
+cwl-runner --outdir=data/output \
+    cwl/remote-sources-workflow.cwl cwl/sample-sources.yml
 ```
 
 ## Build

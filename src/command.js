@@ -20,13 +20,13 @@ const OUTPUT_STREAMS_EXTENSIONS = {
 }
 
 program
-  .argument('<execs-ns>', 'namespace used to generate execution URIs')
   .option('-s, --source <lsq-source>', 'file path with LSQ source as N-Triples compressed with bzip2, defaults to STDIN')
   .option('-q, --queries-csv <queries-csv-dest>', 'file path to write queries as CSV')
   .option('-e, --execs-csv <execs-csv-dest>', 'file path to write executions as CSV')
   .option('-u, --queries-rdf <queries-rdf-dest>', 'file path to write queries as N-Triples compressed with gzip')
   .option('-x, --execs-rdf <execs-rdf-dest>', 'file path to write executions as N-Triples compressed with gzip')
-  .action(async (execsNs, options) => {
+  .option('-n, --execs-ns <execs-ns>', 'namespace used to generate execution URIs')
+  .action(async (options) => {
     const sourceReadStream = 'source' in options ? fs.createReadStream(options.source) : process.stdin;
     const outputStreams = Object.fromEntries(
       Object.keys(options)
@@ -34,7 +34,7 @@ program
       .map(dest => [dest, fs.createWriteStream(addExtension(options[dest], OUTPUT_STREAMS_EXTENSIONS[dest]))]));
         
     await cleanLsqStream(
-      sourceReadStream, execsNs,
+      sourceReadStream, 'execsNs' in options ? options['execsNs'] : '',
       outputStreams
     );
     

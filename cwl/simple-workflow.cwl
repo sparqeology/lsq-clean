@@ -10,9 +10,9 @@ inputs:
   lsq_source:
     type: stdin
   execs_ns:
-    type: string
+    type: string?
     inputBinding:
-      position: 1
+      prefix: --execs-ns
   queries_csv_filename:
     type: string?
     inputBinding:

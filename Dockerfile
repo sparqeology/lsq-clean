@@ -37,5 +37,4 @@ WORKDIR /home/node/output
 ENV NODE_OPTIONS="--max-old-space-size=30000"
 
 # Run the application.
-# ENTRYPOINT ["node", "/usr/src/app/src/command.js", "/home/node/output/queries.nt.gz", "/home/node/output/execs.nt.gz"]
 ENTRYPOINT ["node", "/usr/src/app/src/command.js"]
