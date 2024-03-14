@@ -5,6 +5,6 @@ sources:
     source_id: bio2rdf-kegg
   - source_path: bench-pharmgkb-lsq2
     source_id: bio2rdf-pharmgkb
-base_sources_uri: http://lsq.aksw.org/sources/
+base_sources_uri: http://sparqeology.org/data/sources/lsq2/
 csv_output: true
 rdf_output: true

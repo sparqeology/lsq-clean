@@ -1,7 +1,7 @@
 lsq_source:
   class: File
   path: data/input/bench-kegg-lsq2.nt.bz2
-execs_ns: http://example.org/executions/
+execs_ns: http://sparqeology.org/data/sources/lsq2/kegg/execs/
 queries_csv_filename: kegg_queries
 execs_csv_filename: kegg_execs
 queries_rdf_filename: kegg_queries

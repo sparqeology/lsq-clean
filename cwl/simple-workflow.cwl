@@ -4,7 +4,7 @@ class: CommandLineTool
 baseCommand: node
 requirements:
   DockerRequirement:
-    dockerPull: miguel76/lsq-clean:latest
+    dockerPull: sparqeology/lsq-clean:latest
     dockerOutputDirectory: /home/node/output
 inputs:
   lsq_source:

@@ -1,4 +1,4 @@
 #!/bin/sh
 docker build -t lsq-clean .
-docker tag lsq-clean miguel76/lsq-clean:latest
-docker push miguel76/lsq-clean:latest 
+docker tag lsq-clean sparqeology/lsq-clean:latest
+docker push sparqeology/lsq-clean:latest 
