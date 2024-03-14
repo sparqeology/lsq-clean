@@ -54,6 +54,21 @@ docker run miguel76/lsq-clean --help
 In order to support more complex scenarios, some pipelines using the [Common Workflow Language (CWL)](https://www.commonwl.org/) are supplied.
 You need [Docker](https://www.docker.com/) installed and running.
 
+### Download CWL files
+
+Download [the archive with CWL files](lsq-clean-cwl.zip)
+
+```shell
+wget lsq-clean-cwl.zip
+```
+
+Decompress the file and move inside the created directory (the following commands assume you are inside the directory).
+
+```shell
+unzip lsq-clean-cwl.zip
+cd lsq-clean-cwl
+```
+
 ### Install a CWL Engine
 
 For the supplied pipelines you need a CWL engine supporting [CWL v1.2.0](https://www.commonwl.org/v1.2/), for example [cwltool](https://github.com/common-workflow-language/cwltool).
