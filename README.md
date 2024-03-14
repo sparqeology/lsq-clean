@@ -56,10 +56,10 @@ You need [Docker](https://www.docker.com/) installed and running.
 
 ### Download CWL files
 
-Download [the archive with CWL files](lsq-clean-cwl.zip)
+Download [the latest archive with CWL files](https://github.com/sparqeology/lsq-clean/releases/download/v1.0.0/lsq-clean-cwl.zip)
 
 ```shell
-wget lsq-clean-cwl.zip
+wget https://github.com/sparqeology/lsq-clean/releases/download/v1.0.0/lsq-clean-cwl.zip
 ```
 
 Decompress the file and move inside the created directory (the following commands assume you are inside the directory).
@@ -145,3 +145,12 @@ source publishImage.sh
 ```
 
 ### Publish CWL zip
+
+Generate zip with CWL files
+
+```shell
+cd cwl
+git archive HEAD -o ~/lsq-clean-cwl.zip
+```
+
+Upload zip file as a new release
