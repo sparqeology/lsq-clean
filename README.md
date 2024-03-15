@@ -95,7 +95,7 @@ To convert a single file you can use `simple-workflow.cwl`.
 You can find an example of input in `simple-input-example.yml`.
 
 ```shell
-cwl-runner --outdir=data/output \
+cwl-runner --outdir=data/lsq2-clean \
     simple-workflow.cwl simple-input-example.yml
 ```
 
@@ -103,16 +103,23 @@ To convert multiple files you can use `list-workflow.cwl`.
 You can find an example of input in `sample-files.yml`, featuring some files from the LSQ 2 dataset.
 
 ```shell
-cwl-runner --outdir=data/output \
-    list-workflow.cwl sample-files.yml
+cwl-runner --outdir=data/lsq2-clean \
+    filelist-workflow.cwl sample-files.yml
 ```
 
-To convert multiple files under a common namespace (with a simpler input in respect to `list-workflow.cwl`) you can use `remote-sources-workflow.cwl`. 
-You can find an example of input in `sample-sources.yml`, featuring some files from the LSQ 2 dataset.
+To convert multiple files under a common namespace (with a simpler input in respect to `list-workflow.cwl`) you can use `sources-workflow.cwl`. 
+You can find examples of inputs in `sample-local-sources.yml` and `sample-remote-sources.yml`.
 
 ```shell
-cwl-runner --outdir=data/output \
-    remote-sources-workflow.cwl sample-sources.yml
+cwl-runner --outdir=data/lsq2-clean \
+    sources-workflow.cwl sample-remote-sources.yml
+```
+
+To convert all LSQ2 you can use can call `sources-workflow.cwl` with `meta-lsq/lsq2-sources.yml` as input.
+
+```shell
+cwl-runner --outdir=data/lsq2-clean \
+    sources-workflow.cwl meta-lsq/lsq2-sources.yml
 ```
 
 ## Contribute

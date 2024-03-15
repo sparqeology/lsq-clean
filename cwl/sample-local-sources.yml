@@ -1,0 +1,10 @@
+base_url: data/lsq2-raw/
+extension: .nt.bz2
+sources:
+  - source_path: bench-kegg-lsq2
+    source_id: bio2rdf-kegg
+  - source_path: bench-pharmgkb-lsq2
+    source_id: bio2rdf-pharmgkb
+base_sources_uri: http://sparqeology.org/data/sources/lsq2/
+csv_output: true
+rdf_output: true

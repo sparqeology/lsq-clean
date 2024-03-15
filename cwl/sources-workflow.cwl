@@ -58,7 +58,7 @@ steps:
             base_sources_uri: base_sources_uri
             rdf_output: rdf_output
             csv_output: csv_output
-        run: list-workflow.cwl
+        run: filelist-workflow.cwl
         out: [queries_csv, execs_csv, queries_rdf, execs_rdf]
 
 outputs:
