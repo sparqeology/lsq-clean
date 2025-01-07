@@ -26,7 +26,8 @@ with columns corresponding with the information items described above.
 ## Cleaned LSQ 2.0
 
 As stated above, the RDF output of the tool applied to LSQ 2.0 is [publicly available](https://doi.org/10.6084/m9.figshare.28151342).
-This probably all that you need to know: as LSQ 2.0 contains currently all the data that has been published by the LSQ project, you do not need to use the tool yourself, unless you are contributing to it or you use LSQ pipeline on your own data (which we do not suggest due to the aforementioned bug).
+
+This is probably all that you need to know: as LSQ 2.0 contains currently all the data that has been published by the LSQ project, you do not need to use the tool yourself, unless you are contributing to it or you use LSQ pipeline on your own data (which we do not suggest due to the aforementioned bug).
 
 ## Usage from Command Line (suggested for a single local source)
 The only requirement is having [Docker](https://www.docker.com/) installed and running.
